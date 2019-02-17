@@ -9,6 +9,11 @@ namespace ShoppingCart
     public class Cart
     {
         public int Id { set; get; }        
-        public virtual ICollection<Item> Item { set; get; }
+        public virtual ICollection<Item> ItemC { set; get; }
+
+        public Cart()
+        {
+            ItemC = new List<Item>();
+        }
     }
 }

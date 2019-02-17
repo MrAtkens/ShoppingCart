@@ -14,5 +14,11 @@ namespace ShoppingCart
         public double Price { set; get; }
         public string UrlImg { set; get; }
         public virtual ICollection<Cart> Items { set; get; }
+        public int Article { set; get; }
+
+        public Item()
+        {
+            Items = new List<Cart>();
+        }
     }
 }

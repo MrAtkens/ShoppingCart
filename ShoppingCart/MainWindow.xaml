@@ -11,7 +11,8 @@
 
     <Grid>
 
-        <Grid Name="windowLogin"  Visibility="Visible">
+        <Grid Name="windowLogin"  Visibility="Collapsed">
+            <!--Visible-->
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="19*"/>
@@ -91,7 +92,8 @@
 
         </Grid>
         <!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
-        <Grid Name="mainPanel" Visibility="Collapsed">
+        <Grid Name="mainPanel" Visibility="Visible">
+            <!--Collapsed-->
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -132,36 +134,78 @@
                     <TextBox materialDesign:HintAssist.Hint="SEARCH" VerticalAlignment="Center" Margin="40 20 40 0" Foreground="White" FontSize="20"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,50,20" VerticalAlignment="Center" Grid.Column="2">
-                    <materialDesign:PackIcon Kind="Cart" Foreground="White" Width="25" Height="25" VerticalAlignment="Center" Margin="5"/>
-                    <TextBlock Foreground="White" FontSize="18" Text="5" VerticalAlignment="Center"/>
+
+                    <Button Name="buttonForOpenCartMenu" Background="#FF679CC9" Foreground="#FF679CC9" BorderBrush="#FF679CC9" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="ButtonForOpenCartMenuClick">
+                        <Image Source="http://www.stickpng.com/assets/images/5a6601baeace967f8e026b9f.png"/>
+                    </Button>
+                    <TextBlock Name="countItemsInCart" Foreground="White" FontSize="18" Text="0" VerticalAlignment="Center"/>
+
                 </StackPanel>
             </Grid>
             <ListBox Name="gridAdd" HorizontalAlignment="Left" Height="479" Margin="199,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="871">
 
 
-                <!--<ListBoxItem>
-                    <StackPanel Width="400" Height="420" Margin="80,0,0,0">
-                        <Image Source="https://memepedia.ru/wp-content/uploads/2018/08/205893025_68f1fb410b73621bf94dd645b6ed2735_800-768x468.jpg" Height="168"/>
-                    <TextBlock Foreground="Black" FontSize="72" Text="sdsf;pjdrgliegj plifjgpalsfd j;hsfd gj"/>
-                    <Button Height="30" Width="200">in cart</Button>
-                    </StackPanel>
-                </ListBoxItem>-->
-
-                <Grid VerticalAlignment="Top" Background="White" Height="420" Width="823">
-                    <Grid.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
-                    </Grid.Effect>
-                    <Image Source="Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="21,0,0,0"/>
-                    <StackPanel Margin="542,70,0,70" HorizontalAlignment="Left" Width="263">
-                        <TextBlock Text="BOi NEXT DOOR" FontSize="18" Margin="0 5" Foreground="#FF6A6A6A" />
-                        <TextBlock Text="D8 10.5-3 BASKETBALL SHOES" FontSize="22" TextWrapping="Wrap" Foreground="#FF6A6A6A"/>
-                        <TextBlock Text="$ 95.99" FontSize="20" Margin="0 15" Foreground="#FFC7C7C7"/>
-                        <Button Background="#FF4572A0" BorderBrush="#FF4572A0" Content="SHOP NOW" Margin="0 20"/>
-                    </StackPanel>
-                </Grid>
-
-
             </ListBox>
+
+        </Grid>
+
+        <!--Чистый Флекс-->
+
+        <Grid Name="cartMenu" Visibility="Collapsed">
+            <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF4572A0" Grid.RowSpan="2" MouseDown="WindowMove">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Kind="Account"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MinimazeClick">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MaximazeClick" >
+                        <materialDesign:PackIcon Kind="WindowMaximize"/>
+                    </Button>
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="ExitButtonClick">
+                        <materialDesign:PackIcon Kind="Power"/>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="Nike Sneakers Mart" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+            </Grid>
+
+            <Grid>
+                <StackPanel Width="1080" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,32,0,0" Background="#FF43A9FD">
+                    <TextBlock Text="   Count                    Name                                            Unit price                      Amount price" FontSize="20"/>
+                </StackPanel>
+
+                <ListBox Margin="0,62" Name="cartListBox">
+
+
+
+                    <Grid Background="White" Height="70" Width="1060">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170*"/>
+                            <ColumnDefinition Width="302*"/>
+                            <ColumnDefinition Width="202*"/>
+                            <ColumnDefinition Width="177*"/>
+                            <ColumnDefinition Width="209*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
+                        </Grid.Effect>
+
+                        <TextBlock Text="2" Foreground="Black" FontSize="30" VerticalAlignment="Center" Height="40" Margin="0,15"/>
+                        <TextBlock Text="Hama Astana" Grid.Column="1" Foreground="Black" FontSize="30" VerticalAlignment="Center" Height="40" Margin="0,15"/>
+                        <TextBlock Text="200тг" Grid.Column="2" Foreground="Black" FontSize="30" VerticalAlignment="Center" Height="40" Margin="0,15"/>
+                        <TextBlock Text="200тг" Grid.Column="3" Foreground="Black" FontSize="30" VerticalAlignment="Center" Height="40" Margin="0,15" Grid.ColumnSpan="2"/>
+                        <Button Grid.Column="4" Margin="20" Background="Red" Content="Удалить" Click="ButtonClickForDeleteItemToCart"/>
+                    </Grid>
+                </ListBox>
+            </Grid>
+
+            <Button Margin="12,558,882,10" Content="Back" Click="ButtonClickForReturnToMainMenu" />
+
+            <Button Margin="203,558,691,10" Content="Pay" Click="ButtonClickForPay"/>
 
         </Grid>
 
